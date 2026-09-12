@@ -6,25 +6,16 @@
 
 <title>Nexus Store — Premium Discord & FiveM</title>
 
-<meta name="description" content="Nexus Store — profesjonalne boty Discord, systemy i indywidualne funkcje.">
+<meta
+    name="description"
+    content="Nexus Store — profesjonalne boty Discord, systemy i indywidualne funkcje."
+>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-:root {
-    --bg: #07070a;
-    --bg2: #0c0c11;
-    --card: rgba(18, 18, 25, .78);
-    --card2: rgba(25, 25, 34, .9);
-    --text: #f5f5f7;
-    --muted: #92929d;
-    --line: rgba(255,255,255,.08);
-    --accent: #7c5cff;
-    --accent2: #9d85ff;
-    --green: #39e58c;
-    --danger: #ff5c7a;
-    --shadow: 0 25px 80px rgba(0,0,0,.45);
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -39,101 +30,227 @@ html {
 body {
     font-family: Inter, Arial, sans-serif;
     background:
-        radial-gradient(circle at 15% 10%, rgba(124,92,255,.13), transparent 30%),
-        radial-gradient(circle at 85% 25%, rgba(96,72,255,.10), transparent 25%),
-        var(--bg);
-    color: var(--text);
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(124, 92, 255, .14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(90, 70, 255, .10),
+            transparent 27%
+        ),
+        #07070a;
+
+    color: #f5f5f7;
     overflow-x: hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: linear-gradient(to bottom, black, transparent 75%);
+button {
+    font-family: inherit;
 }
 
-/* =========================
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --bg: #07070a;
+    --bg-secondary: #0c0c11;
+
+    --card: rgba(17, 17, 24, .78);
+    --card-hover: rgba(23, 23, 32, .92);
+
+    --text: #f5f5f7;
+    --muted: #92929d;
+
+    --line: rgba(255,255,255,.08);
+
+    --accent: #7c5cff;
+    --accent-light: #a895ff;
+    --accent-dark: #5436dc;
+
+    --green: #39e58c;
+    --red: #ff5c7a;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
+
+    z-index: -2;
+}
+
+
+/* =========================================================
    CURSOR GLOW
-========================= */
+========================================================= */
 
 .cursor-glow {
+
     position: fixed;
+
     width: 350px;
     height: 350px;
+
     border-radius: 50%;
+
     pointer-events: none;
-    background: radial-gradient(
-        circle,
-        rgba(124,92,255,.11),
-        transparent 65%
-    );
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(124,92,255,.11),
+            transparent 65%
+        );
+
     transform: translate(-50%, -50%);
-    z-index: 0;
+
+    z-index: -1;
 }
 
-/* =========================
+
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 .navbar {
+
     position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
+
     height: 76px;
+
     z-index: 1000;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     padding: 0 6%;
+
     border-bottom: 1px solid transparent;
-    transition: .3s;
+
+    transition: .3s ease;
 }
 
 .navbar.scrolled {
+
     background: rgba(7,7,10,.78);
+
     backdrop-filter: blur(20px);
+
     border-color: var(--line);
 }
 
+
 .logo {
+
     display: flex;
+
     align-items: center;
+
     gap: 11px;
-    text-decoration: none;
+
     color: white;
+
+    text-decoration: none;
+
     font-weight: 900;
+
     font-size: 21px;
+
     letter-spacing: -.7px;
 }
 
 .logo-box {
-    width: 37px;
-    height: 37px;
+
+    width: 38px;
+    height: 38px;
+
     display: grid;
+
     place-items: center;
+
     border-radius: 11px;
-    background: linear-gradient(135deg, var(--accent), #4c36d9);
-    box-shadow: 0 8px 30px rgba(124,92,255,.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    box-shadow:
+        0 8px 30px rgba(124,92,255,.35);
 }
 
+
 .nav-links {
+
     display: flex;
+
     align-items: center;
+
     gap: 28px;
 }
 
 .nav-links a {
+
     color: #aaaab5;
+
     text-decoration: none;
+
     font-size: 14px;
+
     font-weight: 600;
+
     transition: .2s;
 }
 
@@ -141,819 +258,1986 @@ body::before {
     color: white;
 }
 
+
 .nav-actions {
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
 
+
 .discord-btn,
 .cart-btn {
+
+    position: relative;
+
     border: 1px solid var(--line);
+
     background: rgba(255,255,255,.04);
+
     color: white;
+
     padding: 11px 16px;
+
     border-radius: 12px;
+
     cursor: pointer;
+
     font-weight: 700;
+
     transition: .25s;
 }
 
 .discord-btn:hover,
 .cart-btn:hover {
+
     transform: translateY(-2px);
-    border-color: rgba(124,92,255,.5);
-    background: rgba(124,92,255,.12);
+
+    border-color:
+        rgba(124,92,255,.5);
+
+    background:
+        rgba(124,92,255,.12);
 }
 
-.cart-btn {
-    position: relative;
-}
 
 .cart-count {
+
     position: absolute;
-    top: -7px;
-    right: -7px;
-    min-width: 20px;
-    height: 20px;
+
+    top: -8px;
+
+    right: -8px;
+
+    min-width: 21px;
+    height: 21px;
+
     padding: 0 5px;
-    border-radius: 50px;
+
     display: grid;
+
     place-items: center;
-    background: var(--accent);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
     color: white;
+
     font-size: 10px;
+
     font-weight: 900;
+
+    box-shadow:
+        0 4px 15px
+        rgba(124,92,255,.35);
 }
 
-/* =========================
+.cart-count.bump {
+
+    animation:
+        cartBump .4s ease;
+}
+
+@keyframes cartBump {
+
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.45);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
+
     min-height: 850px;
-    padding: 180px 6% 100px;
+
+    padding:
+        180px 6%
+        100px;
+
     position: relative;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     text-align: center;
+
     overflow: hidden;
 }
 
+
 .hero-orb {
+
     position: absolute;
+
     width: 600px;
     height: 600px;
+
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(124,92,255,.2), transparent 68%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(124,92,255,.20),
+            transparent 68%
+        );
+
     filter: blur(10px);
-    animation: orb 8s ease-in-out infinite;
+
+    animation:
+        orbAnimation 8s
+        ease-in-out
+        infinite;
 }
 
-@keyframes orb {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50% { transform: translate(40px,-30px) scale(1.1); }
+@keyframes orbAnimation {
+
+    0%,100% {
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(40px,-30px)
+            scale(1.1);
+    }
 }
+
 
 .hero-content {
+
     max-width: 1000px;
+
     position: relative;
+
     z-index: 2;
 }
 
+
 .badge {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
+
     padding: 9px 14px;
+
     border-radius: 50px;
-    border: 1px solid rgba(124,92,255,.3);
-    background: rgba(124,92,255,.09);
+
+    border:
+        1px solid
+        rgba(124,92,255,.3);
+
+    background:
+        rgba(124,92,255,.09);
+
     color: #c7bbff;
+
     font-size: 12px;
+
     font-weight: 800;
+
     margin-bottom: 25px;
 }
+
 
 .badge-dot {
+
     width: 7px;
     height: 7px;
+
     border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 15px var(--green);
+
+    background:
+        var(--green);
+
+    box-shadow:
+        0 0 15px
+        var(--green);
 }
 
+
 .hero h1 {
-    font-size: clamp(48px, 7vw, 92px);
+
+    font-size:
+        clamp(
+            48px,
+            7vw,
+            92px
+        );
+
     line-height: .96;
+
     letter-spacing: -5px;
+
     font-weight: 900;
+
     margin-bottom: 25px;
 }
 
+
 .gradient-text {
-    background: linear-gradient(90deg, #fff, #a894ff, #7052ff);
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #a894ff,
+            #7052ff
+        );
+
     -webkit-background-clip: text;
+
     color: transparent;
 }
 
+
 .hero p {
+
     max-width: 650px;
+
     margin: auto;
+
     color: var(--muted);
+
     font-size: 17px;
+
     line-height: 1.7;
 }
 
+
 .hero-buttons {
+
     margin-top: 35px;
+
     display: flex;
+
     justify-content: center;
+
     gap: 13px;
+
     flex-wrap: wrap;
 }
 
+
 .primary-btn,
 .secondary-btn {
+
     border: 0;
+
     padding: 15px 23px;
+
     border-radius: 13px;
+
     cursor: pointer;
+
     font-weight: 800;
+
     font-size: 14px;
+
     transition: .3s;
 }
 
+
 .primary-btn {
+
     color: white;
-    background: linear-gradient(135deg, var(--accent), #5436dc);
-    box-shadow: 0 15px 40px rgba(124,92,255,.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(124,92,255,.25);
 }
 
 .primary-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 50px rgba(124,92,255,.4);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(124,92,255,.4);
 }
 
+
 .secondary-btn {
+
     color: white;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,.04);
+
+    border:
+        1px solid var(--line);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 .secondary-btn:hover {
-    background: rgba(255,255,255,.08);
-    transform: translateY(-3px);
+
+    background:
+        rgba(255,255,255,.08);
+
+    transform:
+        translateY(-3px);
 }
 
-/* =========================
+
+/* =========================================================
    STATS
-========================= */
+========================================================= */
 
 .stats {
-    width: min(1100px, 88%);
-    margin: -40px auto 100px;
+
+    width:
+        min(
+            1100px,
+            88%
+        );
+
+    margin:
+        -40px auto
+        100px;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: 1px solid var(--line);
-    background: rgba(15,15,21,.7);
-    backdrop-filter: blur(20px);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    border:
+        1px solid var(--line);
+
+    background:
+        rgba(15,15,21,.7);
+
+    backdrop-filter:
+        blur(20px);
+
     border-radius: 22px;
+
     overflow: hidden;
+
     position: relative;
+
     z-index: 5;
 }
 
+
 .stat {
+
     padding: 30px;
+
     text-align: center;
-    border-right: 1px solid var(--line);
+
+    border-right:
+        1px solid var(--line);
 }
 
 .stat:last-child {
     border-right: 0;
 }
 
+
 .stat strong {
+
     display: block;
+
     font-size: 28px;
+
     margin-bottom: 6px;
 }
 
+
 .stat span {
+
     color: var(--muted);
+
     font-size: 13px;
 }
 
-/* =========================
+
+/* =========================================================
    SECTION
-========================= */
+========================================================= */
 
 .section {
-    width: min(1200px, 88%);
-    margin: 0 auto 130px;
+
+    width:
+        min(
+            1200px,
+            88%
+        );
+
+    margin:
+        0 auto
+        130px;
 }
 
+
 .section-header {
+
     text-align: center;
+
     margin-bottom: 55px;
 }
 
+
 .section-label {
+
     color: #9b88ff;
-    text-transform: uppercase;
+
+    text-transform:
+        uppercase;
+
     letter-spacing: 2px;
+
     font-size: 11px;
+
     font-weight: 900;
+
     margin-bottom: 12px;
 }
 
+
 .section h2 {
-    font-size: clamp(35px, 5vw, 55px);
-    letter-spacing: -2.5px;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            55px
+        );
+
+    letter-spacing:
+        -2.5px;
 }
 
+
 .section-description {
+
     color: var(--muted);
+
     margin-top: 14px;
+
     line-height: 1.7;
 }
 
-/* =========================
+
+/* =========================================================
    PRICING
-========================= */
+========================================================= */
 
 .pricing-grid {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 20px;
+
     align-items: stretch;
 }
 
+
 .plan {
+
     position: relative;
+
     padding: 32px;
-    border: 1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius: 24px;
+
     background:
-        linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015)),
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        ),
         var(--card);
-    backdrop-filter: blur(18px);
-    box-shadow: var(--shadow);
-    transition: .4s;
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        .4s
+        cubic-bezier(.2,.8,.2,1);
+
     overflow: hidden;
 }
 
+
 .plan::before {
+
     content: "";
+
     position: absolute;
-    width: 250px;
-    height: 250px;
-    right: -120px;
-    top: -120px;
+
+    width: 280px;
+    height: 280px;
+
+    right: -140px;
+    top: -140px;
+
     border-radius: 50%;
-    background: rgba(124,92,255,.08);
-    filter: blur(15px);
+
+    background:
+        rgba(124,92,255,.08);
+
+    filter:
+        blur(20px);
+
+    pointer-events: none;
 }
+
 
 .plan:hover {
-    transform: translateY(-10px);
-    border-color: rgba(124,92,255,.35);
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(124,92,255,.35);
 }
+
 
 .plan.featured {
-    border-color: rgba(124,92,255,.65);
-    transform: translateY(-12px);
+
+    border-color:
+        rgba(124,92,255,.65);
+
+    transform:
+        translateY(-12px);
+
     box-shadow:
-        0 30px 90px rgba(0,0,0,.55),
-        0 0 60px rgba(124,92,255,.12);
+
+        0 30px 90px
+        rgba(0,0,0,.55),
+
+        0 0 60px
+        rgba(124,92,255,.12);
 }
+
 
 .plan.featured:hover {
-    transform: translateY(-18px);
+
+    transform:
+        translateY(-18px);
 }
+
+
+/* BESTSELLER */
 
 .bestseller {
+
     position: absolute;
+
     top: 18px;
     right: 18px;
+
     padding: 7px 11px;
+
     border-radius: 50px;
-    background: linear-gradient(135deg, var(--accent), #5436dc);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
     color: white;
+
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: .5px;
-    box-shadow: 0 8px 25px rgba(124,92,255,.3);
+
+    box-shadow:
+        0 8px 25px
+        rgba(124,92,255,.3);
+
+    animation:
+        bestsellerGlow 2.5s
+        ease-in-out
+        infinite;
 }
+
+@keyframes bestsellerGlow {
+
+    0%,100% {
+        box-shadow:
+            0 8px 25px
+            rgba(124,92,255,.25);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 35px
+            rgba(124,92,255,.55);
+    }
+}
+
+
+/* PLAN ICON */
 
 .plan-icon {
-    width: 50px;
-    height: 50px;
+
+    width: 52px;
+    height: 52px;
+
     border-radius: 15px;
+
     display: grid;
+
     place-items: center;
-    background: rgba(124,92,255,.12);
-    border: 1px solid rgba(124,92,255,.18);
-    font-size: 22px;
+
+    background:
+        rgba(124,92,255,.12);
+
+    border:
+        1px solid
+        rgba(124,92,255,.18);
+
     margin-bottom: 20px;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
+
+.plan-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(124,92,255,.15);
+
+    filter:
+        blur(18px);
+}
+
+
+.plan-icon svg {
+
+    width: 28px;
+    height: 28px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
 .plan h3 {
+
     font-size: 25px;
+
     margin-bottom: 8px;
 }
 
+
 .plan-subtitle {
+
     color: var(--muted);
-    min-height: 44px;
+
+    min-height: 52px;
+
     font-size: 13px;
+
     line-height: 1.6;
 }
 
+
+/* PRICE */
+
 .price {
-    margin: 25px 0;
+
+    margin:
+        25px 0;
 }
 
+
 .price-current {
+
     font-size: 40px;
+
     font-weight: 900;
+
     letter-spacing: -2px;
 }
 
+
 .price-current small {
+
     font-size: 14px;
+
     color: var(--muted);
+
     font-weight: 600;
+
+    letter-spacing: 0;
 }
 
+
 .old-price {
+
     display: block;
+
     color: #74747d;
-    text-decoration: line-through;
+
+    text-decoration:
+        line-through;
+
     font-size: 15px;
+
     margin-bottom: 2px;
 }
 
+
 .discount {
+
     display: inline-block;
+
     margin-left: 7px;
-    color: var(--green);
+
+    color:
+        var(--green);
+
     font-size: 11px;
+
     font-weight: 900;
+
+    letter-spacing: 0;
 }
+
+
+/* DIVIDER */
 
 .plan-divider {
+
     height: 1px;
-    background: var(--line);
-    margin: 22px 0;
+
+    background:
+        var(--line);
+
+    margin:
+        22px 0;
 }
 
+
+/* INCLUDES */
+
 .includes {
+
     color: #aaaab5;
+
     font-size: 11px;
+
     font-weight: 800;
-    text-transform: uppercase;
+
+    text-transform:
+        uppercase;
+
     letter-spacing: 1px;
+
     margin-bottom: 14px;
 }
 
+
+/* FEATURES */
+
 .features {
+
     list-style: none;
+
     display: grid;
+
     gap: 11px;
 }
 
+
 .features li {
+
     display: flex;
+
     gap: 10px;
+
     color: #d5d5dc;
+
     font-size: 13px;
+
     line-height: 1.5;
 }
 
+
 .features li::before {
+
     content: "✓";
-    color: var(--green);
+
+    color:
+        var(--green);
+
     font-weight: 900;
+
+    flex-shrink: 0;
 }
+
 
 .custom-feature {
-    color: #b6aaff !important;
+
+    color:
+        #b6aaff !important;
+
+    font-weight: 700;
 }
+
 
 .custom-feature::before {
+
     content: "✦" !important;
-    color: var(--accent2) !important;
+
+    color:
+        var(--accent-light) !important;
 }
 
+
+/* PLAN BUTTON */
+
 .plan-btn {
+
     width: 100%;
+
     margin-top: 27px;
+
     padding: 14px;
-    border: 1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius: 13px;
+
     color: white;
-    background: rgba(255,255,255,.04);
+
+    background:
+        rgba(255,255,255,.04);
+
     cursor: pointer;
+
     font-weight: 800;
+
     transition: .25s;
 }
 
+
 .plan-btn:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: translateY(-2px);
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    transform:
+        translateY(-2px);
 }
+
 
 .featured .plan-btn {
-    background: linear-gradient(135deg, var(--accent), #5436dc);
-    border-color: transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    border-color:
+        transparent;
 }
 
-/* =========================
-   HOW IT WORKS
-========================= */
+
+/* =========================================================
+   STEPS
+========================================================= */
 
 .steps {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 18px;
 }
 
+
 .step {
+
     padding: 28px;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,.025);
+
+    border:
+        1px solid var(--line);
+
+    background:
+        rgba(255,255,255,.025);
+
     border-radius: 20px;
+
     transition: .3s;
 }
 
+
 .step:hover {
-    transform: translateY(-6px);
-    background: rgba(255,255,255,.04);
+
+    transform:
+        translateY(-6px);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
+
 .step-number {
+
     width: 42px;
     height: 42px;
+
     display: grid;
+
     place-items: center;
+
     border-radius: 12px;
-    background: rgba(124,92,255,.13);
-    color: #b5a6ff;
+
+    background:
+        rgba(124,92,255,.13);
+
+    color:
+        #b5a6ff;
+
     font-weight: 900;
+
     margin-bottom: 20px;
 }
 
+
 .step h3 {
+
     margin-bottom: 9px;
 }
 
+
 .step p {
+
     color: var(--muted);
+
     font-size: 13px;
+
     line-height: 1.7;
 }
 
-/* =========================
-   WHY US
-========================= */
+
+/* =========================================================
+   WHY
+========================================================= */
 
 .why-grid {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 18px;
 }
 
+
 .why {
+
     padding: 28px;
-    border: 1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius: 20px;
-    background: rgba(255,255,255,.025);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .3s;
 }
 
+
+.why:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(124,92,255,.22);
+}
+
+
 .why-icon {
+
     font-size: 25px;
+
     margin-bottom: 18px;
 }
 
+
 .why h3 {
+
     margin-bottom: 9px;
 }
 
+
 .why p {
+
     color: var(--muted);
+
     font-size: 13px;
+
     line-height: 1.7;
 }
 
-/* =========================
+
+/* =========================================================
    DISCORD CTA
-========================= */
+========================================================= */
 
 .discord-cta {
+
     position: relative;
+
     overflow: hidden;
+
     text-align: center;
+
     padding: 75px 30px;
+
     border-radius: 28px;
-    border: 1px solid rgba(124,92,255,.22);
+
+    border:
+        1px solid
+        rgba(124,92,255,.22);
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(124,92,255,.18), transparent 55%),
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(124,92,255,.18),
+            transparent 55%
+        ),
+
         rgba(124,92,255,.04);
 }
 
+
 .discord-cta h2 {
-    font-size: clamp(32px, 5vw, 55px);
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            55px
+        );
+
     margin-bottom: 14px;
 }
 
+
 .discord-cta p {
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
     margin-bottom: 28px;
 }
 
-/* =========================
+
+/* =========================================================
    FAQ
-========================= */
+========================================================= */
 
 .faq {
+
     max-width: 850px;
+
     margin: auto;
 }
 
+
 details {
-    border: 1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius: 16px;
-    background: rgba(255,255,255,.025);
+
+    background:
+        rgba(255,255,255,.025);
+
     margin-bottom: 10px;
+
     overflow: hidden;
+
+    transition: .3s;
 }
 
+
+details[open] {
+
+    border-color:
+        rgba(124,92,255,.25);
+
+    background:
+        rgba(124,92,255,.035);
+}
+
+
 summary {
+
     padding: 20px;
+
     cursor: pointer;
+
     font-weight: 700;
+
     list-style: none;
 }
+
 
 summary::-webkit-details-marker {
     display: none;
 }
 
+
 details p {
-    padding: 0 20px 20px;
-    color: var(--muted);
+
+    padding:
+        0 20px
+        20px;
+
+    color:
+        var(--muted);
+
     font-size: 14px;
+
     line-height: 1.7;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
-    border-top: 1px solid var(--line);
-    padding: 40px 6%;
+
+    border-top:
+        1px solid var(--line);
+
+    padding:
+        40px 6%;
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
+
     align-items: center;
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
     font-size: 12px;
 }
 
-footer a {
-    color: #aaa;
-    text-decoration: none;
-}
 
-/* =========================
-   CART
-========================= */
+/* =========================================================
+   CART OVERLAY
+========================================================= */
 
 .cart-overlay {
+
     position: fixed;
+
     inset: 0;
-    background: rgba(0,0,0,.55);
-    backdrop-filter: blur(5px);
+
+    background:
+        rgba(0,0,0,.62);
+
+    backdrop-filter:
+        blur(8px);
+
     opacity: 0;
+
     visibility: hidden;
-    transition: .3s;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
     z-index: 2000;
 }
 
+
 .cart-overlay.active {
+
     opacity: 1;
+
     visibility: visible;
 }
 
+
+/* =========================================================
+   CART DRAWER
+========================================================= */
+
 .cart-drawer {
+
     position: absolute;
+
     top: 0;
     right: 0;
-    width: min(440px, 100%);
+
+    width:
+        min(
+            460px,
+            100%
+        );
+
     height: 100%;
-    background: #0d0d12;
-    border-left: 1px solid var(--line);
-    transform: translateX(100%);
-    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+
+    background:
+        #0c0c11;
+
+    border-left:
+        1px solid var(--line);
+
+    transform:
+        translateX(100%);
+
+    transition:
+        transform
+        .45s
+        cubic-bezier(.2,.8,.2,1);
+
     display: flex;
+
     flex-direction: column;
+
+    box-shadow:
+        -30px 0 80px
+        rgba(0,0,0,.35);
 }
 
-.cart-overlay.active .cart-drawer {
-    transform: translateX(0);
+
+.cart-overlay.active
+.cart-drawer {
+
+    transform:
+        translateX(0);
 }
+
+
+/* CART HEADER */
 
 .cart-header {
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
     padding: 25px;
-    border-bottom: 1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
 }
 
+
+.cart-header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.cart-header-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(124,92,255,.12);
+
+    border:
+        1px solid
+        rgba(124,92,255,.2);
+}
+
+
 .cart-header h3 {
+
     font-size: 21px;
 }
 
-.close-cart {
-    width: 38px;
-    height: 38px;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,.04);
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
 
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-}
+.cart-header small {
 
-.empty-cart {
-    height: 100%;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    color: var(--muted);
-}
-
-.empty-cart-icon {
-    font-size: 45px;
-    margin-bottom: 12px;
-}
-
-.cart-item {
-    display: flex;
-    gap: 13px;
-    padding: 15px;
-    margin-bottom: 10px;
-    border: 1px solid var(--line);
-    border-radius: 15px;
-    background: rgba(255,255,255,.025);
-    animation: cartItem .3s ease;
-}
-
-@keyframes cartItem {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.cart-item-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: rgba(124,92,255,.12);
-    flex-shrink: 0;
-}
-
-.cart-item-info {
-    flex: 1;
-}
-
-.cart-item-info strong {
     display: block;
-    font-size: 13px;
-    margin-bottom: 5px;
+
+    margin-top: 3px;
+
+    color:
+        var(--muted);
+
+    font-size: 11px;
 }
 
-.cart-item-info span {
-    color: var(--muted);
-    font-size: 12px;
-}
 
-.remove-item {
-    border: 0;
-    background: transparent;
-    color: #777;
-    cursor: pointer;
-    transition: .2s;
-}
+.close-cart {
 
-.remove-item:hover {
-    color: var(--danger);
-}
+    width: 40px;
+    height: 40px;
 
-.cart-footer {
-    padding: 20px;
-    border-top: 1px solid var(--line);
-}
+    border:
+        1px solid var(--line);
 
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
+    background:
+        rgba(255,255,255,.04);
 
-.cart-total span {
-    color: var(--muted);
-}
-
-.cart-total strong {
-    font-size: 22px;
-}
-
-.checkout-btn {
-    width: 100%;
-    padding: 15px;
-    border: 0;
-    border-radius: 13px;
     color: white;
-    background: linear-gradient(135deg, var(--accent), #5436dc);
+
+    border-radius: 11px;
+
     cursor: pointer;
-    font-weight: 900;
+
+    font-size: 18px;
+
     transition: .25s;
 }
 
-.checkout-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(124,92,255,.25);
+
+.close-cart:hover {
+
+    background:
+        rgba(255,92,122,.12);
+
+    border-color:
+        rgba(255,92,122,.3);
+
+    color:
+        #ff718c;
+
+    transform:
+        rotate(90deg);
 }
+
+
+/* =========================================================
+   CART ITEMS
+========================================================= */
+
+.cart-items {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px;
+}
+
+
+.cart-items::-webkit-scrollbar {
+
+    width: 5px;
+}
+
+
+.cart-items::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(124,92,255,.35);
+
+    border-radius: 50px;
+}
+
+
+/* EMPTY */
+
+.empty-cart {
+
+    height: 100%;
+
+    display: grid;
+
+    place-items: center;
+
+    text-align: center;
+
+    color:
+        var(--muted);
+}
+
+
+.empty-cart-icon {
+
+    width: 70px;
+    height: 70px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin:
+        0 auto
+        16px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(124,92,255,.08);
+
+    border:
+        1px solid
+        rgba(124,92,255,.15);
+
+    font-size: 28px;
+}
+
+
+/* =========================================================
+   CART ITEM
+========================================================= */
+
+.cart-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    animation:
+        cartItemIn
+        .4s
+        cubic-bezier(.2,.8,.2,1);
+
+    transition:
+        .25s;
+}
+
+
+.cart-item:hover {
+
+    background:
+        rgba(255,255,255,.04);
+
+    border-color:
+        rgba(124,92,255,.22);
+
+    transform:
+        translateX(-3px);
+}
+
+
+@keyframes cartItemIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(40px)
+            scale(.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   PREMIUM CART ICON
+========================================================= */
+
+.cart-item-icon {
+
+    width: 54px;
+    height: 54px;
+
+    min-width: 54px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(124,92,255,.18),
+            rgba(124,92,255,.05)
+        );
+
+    border:
+        1px solid
+        rgba(124,92,255,.20);
+
+    box-shadow:
+
+        inset
+        0 0 20px
+        rgba(124,92,255,.06),
+
+        0 8px 25px
+        rgba(0,0,0,.2);
+
+    transition:
+        .3s ease;
+}
+
+
+.cart-item-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(124,92,255,.16);
+
+    filter:
+        blur(18px);
+
+    opacity: .7;
+}
+
+
+.cart-item-icon svg {
+
+    width: 29px;
+    height: 29px;
+
+    position: relative;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(150,130,255,.4)
+        );
+
+    transition:
+        .3s;
+}
+
+
+.cart-item:hover
+.cart-item-icon {
+
+    transform:
+        scale(1.06)
+        rotate(-2deg);
+
+    border-color:
+        rgba(124,92,255,.5);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(124,92,255,.18),
+
+        inset
+        0 0 25px
+        rgba(124,92,255,.08);
+}
+
+
+.cart-item:hover
+.cart-item-icon svg {
+
+    transform:
+        scale(1.1);
+}
+
+
+/* ITEM INFO */
+
+.cart-item-info {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.cart-item-info strong {
+
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+
+.cart-item-info span {
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+}
+
+
+.cart-item-info .plan-type {
+
+    display: inline-block;
+
+    margin-top: 5px;
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
+
+    background:
+        rgba(124,92,255,.08);
+
+    color:
+        #a99aff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* REMOVE */
+
+.remove-item {
+
+    width: 34px;
+    height: 34px;
+
+    border:
+        1px solid transparent;
+
+    background:
+        transparent;
+
+    color:
+        #707078;
+
+    cursor: pointer;
+
+    border-radius: 9px;
+
+    transition: .25s;
+}
+
+
+.remove-item:hover {
+
+    color:
+        var(--red);
+
+    background:
+        rgba(255,92,122,.08);
+
+    border-color:
+        rgba(255,92,122,.15);
+}
+
+
+/* =========================================================
+   CART FOOTER
+========================================================= */
+
+.cart-footer {
+
+    padding: 20px;
+
+    border-top:
+        1px solid var(--line);
+
+    background:
+        rgba(10,10,14,.75);
+}
+
+
+.cart-summary {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom: 15px;
+}
+
+
+.cart-summary-label {
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+}
+
+
+.cart-total {
+
+    font-size: 24px;
+
+    font-weight: 900;
+}
+
+
+.checkout-btn {
+
+    width: 100%;
+
+    padding: 16px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    cursor: pointer;
+
+    font-weight: 900;
+
+    transition: .25s;
+
+    box-shadow:
+        0 12px 35px
+        rgba(124,92,255,.18);
+}
+
+
+.checkout-btn:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 17px 40px
+        rgba(124,92,255,.3);
+}
+
 
 .checkout-btn:disabled {
+
     opacity: .35;
-    cursor: not-allowed;
+
+    cursor:
+        not-allowed;
+
+    box-shadow: none;
 }
 
-/* =========================
+
+.cart-note {
+
+    text-align: center;
+
+    color:
+        #686872;
+
+    font-size: 10px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 .toast {
+
     position: fixed;
+
     bottom: 25px;
+
     left: 50%;
-    transform: translate(-50%, 100px);
-    padding: 13px 18px;
+
+    transform:
+        translate(-50%, 100px);
+
+    padding:
+        13px 18px;
+
     border-radius: 13px;
-    background: #17171e;
-    border: 1px solid var(--line);
+
+    background:
+        #17171e;
+
+    border:
+        1px solid var(--line);
+
     color: white;
+
     font-size: 13px;
+
     font-weight: 700;
-    box-shadow: var(--shadow);
+
+    box-shadow:
+        var(--shadow);
+
     opacity: 0;
-    transition: .35s;
+
+    transition:
+        .35s;
+
     z-index: 5000;
 }
 
+
 .toast.show {
+
     opacity: 1;
-    transform: translate(-50%, 0);
+
+    transform:
+        translate(-50%, 0);
 }
 
-/* =========================
+
+/* =========================================================
    REVEAL
-========================= */
+========================================================= */
 
 .reveal {
+
     opacity: 0;
-    transform: translateY(35px);
-    transition: .8s ease;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        .8s ease;
 }
+
 
 .reveal.visible {
+
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 900px) {
 
@@ -964,107 +2248,190 @@ footer a {
     .pricing-grid,
     .steps,
     .why-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
     .plan.featured {
-        transform: none;
+
+        transform:
+            none;
     }
 
     .plan.featured:hover {
-        transform: translateY(-8px);
+
+        transform:
+            translateY(-8px);
     }
 
     .stats {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
     .stat {
+
         border-right: 0;
-        border-bottom: 1px solid var(--line);
+
+        border-bottom:
+            1px solid var(--line);
     }
 
     .stat:last-child {
-        border-bottom: 0;
+
+        border-bottom:
+            0;
     }
 
     .hero {
+
         min-height: 750px;
-        padding-top: 150px;
+
+        padding-top:
+            150px;
     }
 
     .hero h1 {
-        letter-spacing: -3px;
-    }
 
-    footer {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        letter-spacing:
+            -3px;
     }
 }
+
 
 @media (max-width: 550px) {
 
     .navbar {
-        padding: 0 4%;
+
+        padding:
+            0 4%;
     }
 
     .discord-btn {
+
         display: none;
     }
 
     .section {
-        width: 92%;
+
+        width:
+            92%;
     }
 
     .hero {
-        padding-left: 4%;
-        padding-right: 4%;
+
+        padding-left:
+            4%;
+
+        padding-right:
+            4%;
     }
 
     .hero h1 {
-        font-size: 48px;
+
+        font-size:
+            48px;
     }
 
     .plan {
-        padding: 25px;
+
+        padding:
+            25px;
+    }
+
+    .cart-drawer {
+
+        width:
+            100%;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- =========================
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div
+    class="cursor-glow"
+    id="cursorGlow">
+</div>
+
+
+<!-- =========================================================
      NAVBAR
-========================= -->
+========================================================= -->
 
-<nav class="navbar" id="navbar">
+<nav
+    class="navbar"
+    id="navbar">
 
-    <a href="#" class="logo">
-        <span class="logo-box">N</span>
+    <a
+        href="#"
+        class="logo">
+
+        <span class="logo-box">
+            N
+        </span>
+
         Nexus Store
+
     </a>
 
+
     <div class="nav-links">
-        <a href="#plans">Cennik</a>
-        <a href="#how">Jak to działa?</a>
-        <a href="#why">Dlaczego my?</a>
-        <a href="#faq">FAQ</a>
+
+        <a href="#plans">
+            Cennik
+        </a>
+
+        <a href="#how">
+            Jak to działa?
+        </a>
+
+        <a href="#why">
+            Dlaczego my?
+        </a>
+
+        <a href="#faq">
+            FAQ
+        </a>
+
     </div>
+
 
     <div class="nav-actions">
 
-        <button class="discord-btn" onclick="openDiscord()">
+        <button
+            class="discord-btn"
+            onclick="openDiscord()">
+
             Discord
+
         </button>
 
-        <button class="cart-btn" onclick="openCart()">
+
+        <button
+            class="cart-btn"
+            onclick="openCart()">
+
             🛒 Koszyk
-            <span class="cart-count" id="cartCount">0</span>
+
+            <span
+                class="cart-count"
+                id="cartCount">
+
+                0
+
+            </span>
+
         </button>
 
     </div>
@@ -1072,44 +2439,69 @@ footer a {
 </nav>
 
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <header class="hero">
 
     <div class="hero-orb"></div>
 
+
     <div class="hero-content">
 
         <div class="badge">
+
             <span class="badge-dot"></span>
+
             PREMIUM DISCORD & FIVEM
+
         </div>
 
+
         <h1>
+
             Twój serwer.<br>
-            <span class="gradient-text">Twoje zasady.</span>
+
+            <span class="gradient-text">
+                Twoje zasady.
+            </span>
+
         </h1>
 
+
         <p>
-            Wybierz odpowiedni pakiet, dodaj własne funkcje
-            i otrzymaj profesjonalnie przygotowany system
-            dopasowany do Twojego serwera.
+
+            Profesjonalne rozwiązania Discord i FiveM,
+            gotowe do dopasowania pod Twój serwer.
+            Wybierz pakiet i dodaj własne funkcje.
+
         </p>
+
 
         <div class="hero-buttons">
 
             <button
                 class="primary-btn"
-                onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
+                onclick="
+                    document
+                    .getElementById('plans')
+                    .scrollIntoView({
+                        behavior:'smooth'
+                    })
+                ">
+
                 Zobacz cennik →
+
             </button>
+
 
             <button
                 class="secondary-btn"
                 onclick="openDiscord()">
+
                 💬 Dołącz na Discord
+
             </button>
 
         </div>
@@ -1119,35 +2511,62 @@ footer a {
 </header>
 
 
-<!-- =========================
+<!-- =========================================================
      STATS
-========================= -->
+========================================================= -->
 
-<section class="stats reveal">
+<section
+    class="stats reveal">
 
     <div class="stat">
-        <strong>3</strong>
-        <span>Dopasowane pakiety</span>
+
+        <strong>
+            3
+        </strong>
+
+        <span>
+            Dopasowane pakiety
+        </span>
+
     </div>
 
-    <div class="stat">
-        <strong>1–11</strong>
-        <span>Własnych funkcji</span>
-    </div>
 
     <div class="stat">
-        <strong>24/7</strong>
-        <span>Dostęp do zamówienia</span>
+
+        <strong>
+            1–11
+        </strong>
+
+        <span>
+            Własnych funkcji
+        </span>
+
+    </div>
+
+
+    <div class="stat">
+
+        <strong>
+            24/7
+        </strong>
+
+        <span>
+            Dostęp do wsparcia
+        </span>
+
     </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      PRICING
-========================= -->
+========================================================= -->
 
-<section class="section reveal" id="plans">
+<section
+    class="section reveal"
+    id="plans">
+
 
     <div class="section-header">
 
@@ -1155,11 +2574,17 @@ footer a {
             CENNIK
         </div>
 
-        <h2>Wybierz swój pakiet</h2>
+
+        <h2>
+            Wybierz swój pakiet
+        </h2>
+
 
         <p class="section-description">
+
             Każdy wyższy pakiet zawiera wszystkie funkcje
             poprzednich poziomów oraz nowe możliwości.
+
         </p>
 
     </div>
@@ -1168,46 +2593,136 @@ footer a {
     <div class="pricing-grid">
 
 
-        <!-- STARTER -->
+        <!-- =================================================
+             STARTER
+        ================================================== -->
 
         <article class="plan">
 
+
             <div class="plan-icon">
-                🥉
+
+                <!-- MEDAL -->
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M8.5 3.5H15.5L17.5 7.5L12 12L6.5 7.5L8.5 3.5Z"
+                        stroke="#a895ff"
+                        stroke-width="1.7"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M6.5 7.5L3.5 8.5L6.5 13L10 12"
+                        stroke="#7660e8"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M17.5 7.5L20.5 8.5L17.5 13L14 12"
+                        stroke="#7660e8"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M8 13L9 20H15L16 13"
+                        stroke="#b9aaff"
+                        stroke-width="1.7"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M9 20H15"
+                        stroke="#8f79ff"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
             </div>
 
-            <h3>Starter</h3>
+
+            <h3>
+                Starter
+            </h3>
+
 
             <p class="plan-subtitle">
-                Idealny na początek. Wszystkie najważniejsze
-                funkcje + własne dodatki.
+
+                Idealny pakiet na start.
+                Wszystkie najważniejsze funkcje
+                oraz własne dodatki.
+
             </p>
+
 
             <div class="price">
 
                 <div class="price-current">
+
                     19,99 zł
-                    <small>/ pakiet</small>
+
+                    <small>
+                        / pakiet
+                    </small>
+
                 </div>
 
             </div>
 
+
             <div class="plan-divider"></div>
+
 
             <div class="includes">
                 W pakiecie
             </div>
 
+
             <ul class="features">
 
-                <li>Regulaminy</li>
-                <li>System ticketów</li>
-                <li>System weryfikacji</li>
-                <li>Podstawowa moderacja</li>
-                <li>System powitań</li>
-                <li>Podstawowe komendy</li>
-                <li>Konfiguracja serwera</li>
-                <li>Wsparcie</li>
+                <li>
+                    Regulaminy
+                </li>
+
+                <li>
+                    System ticketów
+                </li>
+
+                <li>
+                    System weryfikacji
+                </li>
+
+                <li>
+                    Podstawowa moderacja
+                </li>
+
+                <li>
+                    System powitań
+                </li>
+
+                <li>
+                    Podstawowe komendy
+                </li>
+
+                <li>
+                    Konfiguracja serwera
+                </li>
+
+                <li>
+                    System automatycznych odpowiedzi
+                </li>
+
+                <li>
+                    Wsparcie
+                </li>
 
                 <li class="custom-feature">
                     1–3 własne funkcje
@@ -1215,61 +2730,168 @@ footer a {
 
             </ul>
 
+
             <button
                 class="plan-btn"
-                onclick="addPlan('Starter', 19.99, '🥉')">
+                onclick="
+                    addPlan(
+                        'Starter',
+                        19.99
+                    )
+                ">
+
                 Wybieram Starter
+
             </button>
 
         </article>
 
 
-        <!-- PRO -->
+        <!-- =================================================
+             PRO
+        ================================================== -->
 
-        <article class="plan featured">
+        <article
+            class="plan featured">
+
 
             <div class="bestseller">
+
                 🔥 BESTSELLER
+
             </div>
+
 
             <div class="plan-icon">
-                🥇
+
+                <!-- CROWN -->
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M4 6.5L7.5 10L12 4L16.5 10L20 6.5L18 18H6L4 6.5Z"
+                        stroke="#a992ff"
+                        stroke-width="1.7"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M6 18H18"
+                        stroke="#7d63f2"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M7 14H17"
+                        stroke="#c2b5ff"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                    />
+
+                    <circle
+                        cx="7.5"
+                        cy="7"
+                        r="1"
+                        fill="#b9aaff"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="5"
+                        r="1"
+                        fill="#cfc6ff"
+                    />
+
+                    <circle
+                        cx="16.5"
+                        cy="7"
+                        r="1"
+                        fill="#b9aaff"
+                    />
+
+                </svg>
+
             </div>
 
-            <h3>Pro</h3>
+
+            <h3>
+                Pro
+            </h3>
+
 
             <p class="plan-subtitle">
-                Najlepszy wybór dla rozwijających się serwerów.
-                Zawiera wszystko ze Startera.
+
+                Najlepszy wybór dla rozwijających
+                się serwerów. Zawiera wszystko
+                ze Startera.
+
             </p>
+
 
             <div class="price">
 
                 <div class="price-current">
+
                     34,99 zł
-                    <small>/ pakiet</small>
+
+                    <small>
+                        / pakiet
+                    </small>
+
                 </div>
 
             </div>
 
+
             <div class="plan-divider"></div>
+
 
             <div class="includes">
                 Wszystko ze Starter +
             </div>
 
+
             <ul class="features">
 
-                <li>Wszystko ze Starter</li>
+                <li>
+                    Wszystko ze Starter
+                </li>
 
-                <li>Zaawansowana moderacja</li>
-                <li>System logów</li>
-                <li>Rozbudowany system weryfikacji</li>
-                <li>Automatyczne role</li>
-                <li>System zgłoszeń</li>
-                <li>Rozbudowane komendy</li>
-                <li>Zaawansowana konfiguracja</li>
-                <li>Priorytetowe wsparcie</li>
+                <li>
+                    Zaawansowana moderacja
+                </li>
+
+                <li>
+                    System logów
+                </li>
+
+                <li>
+                    Rozbudowany system weryfikacji
+                </li>
+
+                <li>
+                    Automatyczne role
+                </li>
+
+                <li>
+                    System zgłoszeń
+                </li>
+
+                <li>
+                    Rozbudowane komendy
+                </li>
+
+                <li>
+                    Zaawansowana konfiguracja
+                </li>
+
+                <li>
+                    Priorytetowe wsparcie
+                </li>
 
                 <li class="custom-feature">
                     4–7 własnych funkcji
@@ -1277,29 +2899,82 @@ footer a {
 
             </ul>
 
+
             <button
                 class="plan-btn"
-                onclick="addPlan('Pro', 34.99, '🥇')">
+                onclick="
+                    addPlan(
+                        'Pro',
+                        34.99
+                    )
+                ">
+
                 Wybieram Pro
+
             </button>
 
         </article>
 
 
-        <!-- ULTIMATE -->
+        <!-- =================================================
+             ULTIMATE
+        ================================================== -->
 
         <article class="plan">
 
+
             <div class="plan-icon">
-                💎
+
+                <!-- DIAMOND -->
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M12 2.8L19.2 12L12 21.2L4.8 12L12 2.8Z"
+                        stroke="#b7a7ff"
+                        stroke-width="1.7"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M12 2.8V21.2"
+                        stroke="#846df3"
+                        stroke-width="1.3"
+                    />
+
+                    <path
+                        d="M4.8 12H19.2"
+                        stroke="#846df3"
+                        stroke-width="1.3"
+                    />
+
+                    <path
+                        d="M12 2.8L8.5 12L12 21.2L15.5 12L12 2.8Z"
+                        stroke="#cfc6ff"
+                        stroke-width="1.2"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
             </div>
 
-            <h3>Ultimate</h3>
+
+            <h3>
+                Ultimate
+            </h3>
+
 
             <p class="plan-subtitle">
-                Kompletny pakiet dla najbardziej wymagających
-                serwerów i rozbudowanych projektów.
+
+                Kompletny pakiet dla najbardziej
+                wymagających serwerów i projektów.
+
             </p>
+
 
             <div class="price">
 
@@ -1307,11 +2982,14 @@ footer a {
                     89,99 zł
                 </span>
 
+
                 <div class="price-current">
 
                     49,99 zł
 
-                    <small>/ pakiet</small>
+                    <small>
+                        / pakiet
+                    </small>
 
                     <span class="discount">
                         -44%
@@ -1321,25 +2999,56 @@ footer a {
 
             </div>
 
+
             <div class="plan-divider"></div>
+
 
             <div class="includes">
                 Wszystko z Pro +
             </div>
 
+
             <ul class="features">
 
-                <li>Wszystko ze Starter</li>
-                <li>Wszystko z Pro</li>
+                <li>
+                    Wszystko ze Starter
+                </li>
 
-                <li>System ekonomii</li>
-                <li>System poziomów / XP</li>
-                <li>Zaawansowane statystyki</li>
-                <li>Automatyzacje</li>
-                <li>Zaawansowane zabezpieczenia</li>
-                <li>Indywidualne rozwiązania</li>
-                <li>Rozbudowane systemy</li>
-                <li>Najwyższy priorytet wsparcia</li>
+                <li>
+                    Wszystko z Pro
+                </li>
+
+                <li>
+                    System ekonomii
+                </li>
+
+                <li>
+                    System poziomów / XP
+                </li>
+
+                <li>
+                    Zaawansowane statystyki
+                </li>
+
+                <li>
+                    Automatyzacje
+                </li>
+
+                <li>
+                    Zaawansowane zabezpieczenia
+                </li>
+
+                <li>
+                    Indywidualne rozwiązania
+                </li>
+
+                <li>
+                    Rozbudowane systemy
+                </li>
+
+                <li>
+                    Najwyższy priorytet wsparcia
+                </li>
 
                 <li class="custom-feature">
                     8–11 własnych funkcji
@@ -1347,10 +3056,18 @@ footer a {
 
             </ul>
 
+
             <button
                 class="plan-btn"
-                onclick="addPlan('Ultimate', 49.99, '💎')">
+                onclick="
+                    addPlan(
+                        'Ultimate',
+                        49.99
+                    )
+                ">
+
                 Wybieram Ultimate
+
             </button>
 
         </article>
@@ -1360,11 +3077,14 @@ footer a {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      HOW IT WORKS
-========================= -->
+========================================================= -->
 
-<section class="section reveal" id="how">
+<section
+    class="section reveal"
+    id="how">
+
 
     <div class="section-header">
 
@@ -1372,26 +3092,41 @@ footer a {
             PROCES
         </div>
 
-        <h2>Jak to działa?</h2>
+
+        <h2>
+            Jak to działa?
+        </h2>
+
 
         <p class="section-description">
-            Prosty proces od wyboru pakietu do realizacji zamówienia.
+
+            Prosty proces od wyboru pakietu
+            do realizacji zamówienia.
+
         </p>
 
     </div>
 
+
     <div class="steps">
+
 
         <div class="step">
 
-            <div class="step-number">01</div>
+            <div class="step-number">
+                01
+            </div>
 
-            <h3>Wybierz pakiet</h3>
+            <h3>
+                Wybierz pakiet
+            </h3>
 
             <p>
+
                 Wybierz Starter, Pro lub Ultimate
                 w zależności od tego, jak rozbudowanego
                 rozwiązania potrzebujesz.
+
             </p>
 
         </div>
@@ -1399,13 +3134,20 @@ footer a {
 
         <div class="step">
 
-            <div class="step-number">02</div>
+            <div class="step-number">
+                02
+            </div>
 
-            <h3>Dodaj własne funkcje</h3>
+            <h3>
+                Dodaj własne funkcje
+            </h3>
 
             <p>
-                Określ własne funkcje, które mają zostać
-                przygotowane specjalnie pod Twój projekt.
+
+                Określ własne funkcje, które mają
+                zostać przygotowane specjalnie
+                pod Twój projekt.
+
             </p>
 
         </div>
@@ -1413,13 +3155,20 @@ footer a {
 
         <div class="step">
 
-            <div class="step-number">03</div>
+            <div class="step-number">
+                03
+            </div>
 
-            <h3>Przejdź na Discord</h3>
+            <h3>
+                Przejdź na Discord
+            </h3>
 
             <p>
-                Po przejściu do zamówienia trafiasz na Discord,
-                gdzie ustalane są szczegóły realizacji.
+
+                Po przejściu do zamówienia trafisz
+                na Discorda, gdzie ustalane są
+                szczegóły realizacji.
+
             </p>
 
         </div>
@@ -1429,11 +3178,14 @@ footer a {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      WHY US
-========================= -->
+========================================================= -->
 
-<section class="section reveal" id="why">
+<section
+    class="section reveal"
+    id="why">
+
 
     <div class="section-header">
 
@@ -1441,11 +3193,17 @@ footer a {
             NEXUS STORE
         </div>
 
-        <h2>Dlaczego my?</h2>
+
+        <h2>
+            Dlaczego my?
+        </h2>
+
 
         <p class="section-description">
-            Stawiamy na prostotę, elastyczność i dopasowanie
-            rozwiązania do potrzeb klienta.
+
+            Stawiamy na prostotę, elastyczność
+            i dopasowanie rozwiązania do klienta.
+
         </p>
 
     </div>
@@ -1453,15 +3211,22 @@ footer a {
 
     <div class="why-grid">
 
+
         <div class="why">
 
-            <div class="why-icon">⚡</div>
+            <div class="why-icon">
+                ⚡
+            </div>
 
-            <h3>Szybka realizacja</h3>
+            <h3>
+                Szybka realizacja
+            </h3>
 
             <p>
+
                 Sprawnie przechodzimy od zamówienia
                 do ustalenia szczegółów projektu.
+
             </p>
 
         </div>
@@ -1469,13 +3234,20 @@ footer a {
 
         <div class="why">
 
-            <div class="why-icon">🛠️</div>
+            <div class="why-icon">
+                🛠️
+            </div>
 
-            <h3>Własne funkcje</h3>
+            <h3>
+                Własne funkcje
+            </h3>
 
             <p>
-                Każdy pakiet pozwala na dodanie własnych
-                funkcji dopasowanych do Twojego serwera.
+
+                Każdy pakiet pozwala na dodanie
+                własnych funkcji dopasowanych
+                do Twojego serwera.
+
             </p>
 
         </div>
@@ -1483,13 +3255,20 @@ footer a {
 
         <div class="why">
 
-            <div class="why-icon">💬</div>
+            <div class="why-icon">
+                💬
+            </div>
 
-            <h3>Wsparcie</h3>
+            <h3>
+                Wsparcie
+            </h3>
 
             <p>
-                Niezależnie od wybranego planu otrzymujesz
-                dostęp do wsparcia i pomocy.
+
+                Niezależnie od wybranego planu
+                otrzymujesz dostęp do pomocy
+                i wsparcia.
+
             </p>
 
         </div>
@@ -1499,25 +3278,32 @@ footer a {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      DISCORD CTA
-========================= -->
+========================================================= -->
 
 <section class="section reveal">
 
     <div class="discord-cta">
 
-        <h2>Masz pytania?</h2>
+        <h2>
+            Masz pytania?
+        </h2>
 
         <p>
+
             Wpadnij na naszego Discorda i porozmawiaj
             z nami przed złożeniem zamówienia.
+
         </p>
+
 
         <button
             class="primary-btn"
             onclick="openDiscord()">
+
             💬 Otwórz Discord
+
         </button>
 
     </div>
@@ -1525,11 +3311,14 @@ footer a {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      FAQ
-========================= -->
+========================================================= -->
 
-<section class="section reveal" id="faq">
+<section
+    class="section reveal"
+    id="faq">
+
 
     <div class="section-header">
 
@@ -1537,23 +3326,63 @@ footer a {
             FAQ
         </div>
 
-        <h2>Najczęstsze pytania</h2>
+
+        <h2>
+            Najczęstsze pytania
+        </h2>
 
     </div>
 
 
     <div class="faq">
 
+
         <details>
 
             <summary>
-                Czy wyższy pakiet zawiera poprzednie funkcje?
+                Czy Pro zawiera Starter?
             </summary>
 
             <p>
-                Tak. Pro zawiera wszystkie podstawowe funkcje
-                Startera, a Ultimate zawiera wszystko ze Startera
-                i Pro oraz dodatkowe funkcje.
+
+                Tak. Pakiet Pro zawiera wszystkie
+                podstawowe funkcje znajdujące się
+                w Starterze oraz dodatkowe funkcje
+                dostępne w Pro.
+
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Czy Ultimate zawiera Pro i Starter?
+            </summary>
+
+            <p>
+
+                Tak. Ultimate zawiera wszystkie
+                funkcje Startera i Pro oraz
+                dodatkowe funkcje Ultimate.
+
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Czy w Starterze jest weryfikacja?
+            </summary>
+
+            <p>
+
+                Tak. System weryfikacji znajduje się
+                już w podstawowym pakiecie Starter.
+
             </p>
 
         </details>
@@ -1566,22 +3395,10 @@ footer a {
             </summary>
 
             <p>
+
                 Starter pozwala na 1–3 własne funkcje,
                 Pro na 4–7, a Ultimate na 8–11.
-            </p>
 
-        </details>
-
-
-        <details>
-
-            <summary>
-                Czy w Starterze jest system weryfikacji?
-            </summary>
-
-            <p>
-                Tak. System weryfikacji znajduje się już
-                w podstawowym pakiecie Starter.
             </p>
 
         </details>
@@ -1594,9 +3411,11 @@ footer a {
             </summary>
 
             <p>
+
                 Wybierasz pakiet, dodajesz go do koszyka,
                 a następnie przechodzisz na Discorda,
                 gdzie ustalane są szczegóły zamówienia.
+
             </p>
 
         </details>
@@ -1605,12 +3424,15 @@ footer a {
         <details>
 
             <summary>
-                Czy mogę najpierw zapytać o szczegóły?
+                Czy mogę zapytać przed zakupem?
             </summary>
 
             <p>
-                Oczywiście. Możesz skontaktować się z nami
-                na Discordzie przed złożeniem zamówienia.
+
+                Oczywiście. Możesz skontaktować się
+                z nami na Discordzie przed złożeniem
+                zamówienia.
+
             </p>
 
         </details>
@@ -1620,56 +3442,170 @@ footer a {
 </section>
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
     <div>
-        © 2026 Nexus Store. Wszystkie prawa zastrzeżone.
+
+        © 2026 Nexus Store.
+        Wszystkie prawa zastrzeżone.
+
     </div>
 
+
     <div>
+
         Premium Discord & FiveM Solutions
+
     </div>
 
 </footer>
 
 
-<!-- =========================
+<!-- =========================================================
      CART
-========================= -->
+========================================================= -->
 
-<div class="cart-overlay" id="cartOverlay" onclick="overlayClick(event)">
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="overlayClick(event)">
+
 
     <aside class="cart-drawer">
 
+
+        <!-- HEADER -->
+
         <div class="cart-header">
 
-            <h3>Twój koszyk</h3>
+
+            <div class="cart-header-left">
+
+                <div class="cart-header-icon">
+
+                    <svg
+                        width="21"
+                        height="21"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+
+                        <path
+                            d="M4 5H6L8 16H18L20 8H7"
+                            stroke="#a895ff"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <circle
+                            cx="9"
+                            cy="20"
+                            r="1.5"
+                            fill="#a895ff"
+                        />
+
+                        <circle
+                            cx="17"
+                            cy="20"
+                            r="1.5"
+                            fill="#a895ff"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Twój koszyk
+                    </h3>
+
+                    <small>
+                        Wybrane pakiety
+                    </small>
+
+                </div>
+
+            </div>
+
 
             <button
                 class="close-cart"
                 onclick="closeCart()">
+
                 ×
+
             </button>
 
         </div>
 
 
-        <div class="cart-items" id="cartItems">
+        <!-- ITEMS -->
+
+        <div
+            class="cart-items"
+            id="cartItems">
+
 
             <div class="empty-cart">
 
                 <div>
-                    <div class="empty-cart-icon">🛒</div>
 
-                    <strong>Koszyk jest pusty</strong>
+                    <div class="empty-cart-icon">
+
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <path
+                                d="M4 5H6L8 16H18L20 8H7"
+                                stroke="#8f7cff"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+
+                            <circle
+                                cx="9"
+                                cy="20"
+                                r="1.5"
+                                fill="#8f7cff"
+                            />
+
+                            <circle
+                                cx="17"
+                                cy="20"
+                                r="1.5"
+                                fill="#8f7cff"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <strong>
+                        Koszyk jest pusty
+                    </strong>
+
 
                     <p style="margin-top:7px;">
-                        Dodaj jeden z naszych pakietów.
+
+                        Wybierz jeden z naszych
+                        pakietów.
+
                     </p>
+
                 </div>
 
             </div>
@@ -1677,25 +3613,50 @@ footer a {
         </div>
 
 
+        <!-- FOOTER -->
+
         <div class="cart-footer">
 
-            <div class="cart-total">
 
-                <span>Razem</span>
+            <div class="cart-summary">
 
-                <strong id="cartTotal">
+                <div>
+
+                    <div class="cart-summary-label">
+                        Razem
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="cart-total"
+                    id="cartTotal">
+
                     0,00 zł
-                </strong>
+
+                </div>
 
             </div>
+
 
             <button
                 class="checkout-btn"
                 id="checkoutBtn"
                 onclick="checkout()"
                 disabled>
+
                 Przejdź do zamówienia →
+
             </button>
+
+
+            <div class="cart-note">
+
+                Zamówienie zostanie dokończone
+                na naszym Discordzie.
+
+            </div>
 
         </div>
 
@@ -1704,30 +3665,46 @@ footer a {
 </div>
 
 
-<div class="toast" id="toast"></div>
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
 
 
 <script>
 
-/* =====================================================
-   KONFIGURACJA
-===================================================== */
 
-const DISCORD_LINK = "https://discord.gg/TWOJ-LINK";
+/* =========================================================
+   DISCORD LINK
+========================================================= */
 
+/*
+    ZMIEŃ TYLKO TEN LINK
+*/
 
-/* =====================================================
-   KOSZYK
-===================================================== */
-
-let cart = JSON.parse(
-    localStorage.getItem("nexus_cart") || "[]"
-);
+const DISCORD_LINK =
+    "https://discord.gg/TWOJ-LINK";
 
 
-/* =====================================================
-   DISCORD
-===================================================== */
+/* =========================================================
+   CART DATA
+========================================================= */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem(
+            "nexus_cart"
+        ) || "[]"
+    );
+
+
+/* =========================================================
+   OPEN DISCORD
+========================================================= */
 
 function openDiscord() {
 
@@ -1740,15 +3717,185 @@ function openDiscord() {
 }
 
 
-/* =====================================================
-   DODAWANIE PLANU
-===================================================== */
+/* =========================================================
+   PLAN ICONS
+========================================================= */
 
-function addPlan(name, price, icon) {
+function getPlanIcon(plan) {
 
-    const existing = cart.find(
-        item => item.name === name
-    );
+
+    /* STARTER */
+
+    if (plan === "Starter") {
+
+        return `
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M8.5 3.5H15.5L17.5 7.5L12 12L6.5 7.5L8.5 3.5Z"
+                    stroke="#a895ff"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M6.5 7.5L3.5 8.5L6.5 13L10 12"
+                    stroke="#7660e8"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M17.5 7.5L20.5 8.5L17.5 13L14 12"
+                    stroke="#7660e8"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M8 13L9 20H15L16 13"
+                    stroke="#b9aaff"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M9 20H15"
+                    stroke="#8f79ff"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                />
+
+            </svg>
+
+        `;
+    }
+
+
+    /* PRO */
+
+    if (plan === "Pro") {
+
+        return `
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M4 6.5L7.5 10L12 4L16.5 10L20 6.5L18 18H6L4 6.5Z"
+                    stroke="#a992ff"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M6 18H18"
+                    stroke="#7d63f2"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                />
+
+                <path
+                    d="M7 14H17"
+                    stroke="#c2b5ff"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                />
+
+                <circle
+                    cx="7.5"
+                    cy="7"
+                    r="1"
+                    fill="#b9aaff"
+                />
+
+                <circle
+                    cx="12"
+                    cy="5"
+                    r="1"
+                    fill="#cfc6ff"
+                />
+
+                <circle
+                    cx="16.5"
+                    cy="7"
+                    r="1"
+                    fill="#b9aaff"
+                />
+
+            </svg>
+
+        `;
+    }
+
+
+    /* ULTIMATE */
+
+    if (plan === "Ultimate") {
+
+        return `
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M12 2.8L19.2 12L12 21.2L4.8 12L12 2.8Z"
+                    stroke="#b7a7ff"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M12 2.8V21.2"
+                    stroke="#846df3"
+                    stroke-width="1.3"
+                />
+
+                <path
+                    d="M4.8 12H19.2"
+                    stroke="#846df3"
+                    stroke-width="1.3"
+                />
+
+                <path
+                    d="M12 2.8L8.5 12L12 21.2L15.5 12L12 2.8Z"
+                    stroke="#cfc6ff"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                />
+
+            </svg>
+
+        `;
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
+   ADD PLAN
+========================================================= */
+
+function addPlan(name, price) {
+
+
+    const existing =
+        cart.find(
+            item =>
+                item.name === name
+        );
+
 
     if (existing) {
 
@@ -1761,44 +3908,98 @@ function addPlan(name, price, icon) {
         return;
     }
 
+
     cart.push({
-        name,
-        price,
-        icon
+
+        name: name,
+
+        price: price
+
     });
+
 
     saveCart();
 
     renderCart();
 
+    bumpCart();
+
     showToast(
-        `${icon} ${name} dodano do koszyka`
+        `${name} dodano do koszyka`
     );
 
-    openCart();
+
+    setTimeout(
+        () => openCart(),
+        120
+    );
+
 }
 
 
-/* =====================================================
-   USUWANIE
-===================================================== */
+/* =========================================================
+   CART BUMP
+========================================================= */
+
+function bumpCart() {
+
+    const count =
+        document.getElementById(
+            "cartCount"
+        );
+
+
+    count.classList.remove(
+        "bump"
+    );
+
+
+    void count.offsetWidth;
+
+
+    count.classList.add(
+        "bump"
+    );
+
+}
+
+
+/* =========================================================
+   REMOVE ITEM
+========================================================= */
 
 function removeItem(index) {
 
-    cart.splice(index, 1);
+    const item =
+        cart[index];
+
+
+    if (!item) {
+        return;
+    }
+
+
+    cart.splice(
+        index,
+        1
+    );
+
 
     saveCart();
 
     renderCart();
 
-    showToast("Usunięto z koszyka");
+
+    showToast(
+        `${item.name} usunięto z koszyka`
+    );
 
 }
 
 
-/* =====================================================
-   LOCAL STORAGE
-===================================================== */
+/* =========================================================
+   SAVE CART
+========================================================= */
 
 function saveCart() {
 
@@ -1810,48 +4011,110 @@ function saveCart() {
 }
 
 
-/* =====================================================
-   RENDER KOSZYKA
-===================================================== */
+/* =========================================================
+   RENDER CART
+========================================================= */
 
 function renderCart() {
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartItems"
+        );
+
 
     const count =
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
+
 
     const totalElement =
-        document.getElementById("cartTotal");
+        document.getElementById(
+            "cartTotal"
+        );
+
 
     const checkoutButton =
-        document.getElementById("checkoutBtn");
+        document.getElementById(
+            "checkoutBtn"
+        );
 
 
-    count.textContent = cart.length;
+    count.textContent =
+        cart.length;
 
 
     if (cart.length === 0) {
 
         container.innerHTML = `
-            <div class="empty-cart">
-                <div>
-                    <div class="empty-cart-icon">🛒</div>
 
-                    <strong>Koszyk jest pusty</strong>
+            <div class="empty-cart">
+
+                <div>
+
+                    <div class="empty-cart-icon">
+
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <path
+                                d="M4 5H6L8 16H18L20 8H7"
+                                stroke="#8f7cff"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+
+                            <circle
+                                cx="9"
+                                cy="20"
+                                r="1.5"
+                                fill="#8f7cff"
+                            />
+
+                            <circle
+                                cx="17"
+                                cy="20"
+                                r="1.5"
+                                fill="#8f7cff"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <strong>
+                        Koszyk jest pusty
+                    </strong>
+
 
                     <p style="margin-top:7px;">
-                        Dodaj jeden z naszych pakietów.
+
+                        Wybierz jeden z naszych
+                        pakietów.
+
                     </p>
+
                 </div>
+
             </div>
+
         `;
+
 
         totalElement.textContent =
             "0,00 zł";
 
-        checkoutButton.disabled = true;
+
+        checkoutButton.disabled =
+            true;
+
 
         return;
     }
@@ -1860,91 +4123,152 @@ function renderCart() {
     let total = 0;
 
 
-    container.innerHTML = cart.map(
-        (item, index) => {
+    container.innerHTML =
+        cart.map(
+            (item, index) => {
 
-            total += item.price;
 
-            return `
-                <div class="cart-item">
+                total +=
+                    Number(
+                        item.price
+                    );
 
-                    <div class="cart-item-icon">
-                        ${item.icon}
+
+                return `
+
+                    <div
+                        class="cart-item">
+
+
+                        <div
+                            class="cart-item-icon">
+
+                            ${getPlanIcon(
+                                item.name
+                            )}
+
+                        </div>
+
+
+                        <div
+                            class="cart-item-info">
+
+                            <strong>
+                                ${item.name}
+                            </strong>
+
+
+                            <span>
+
+                                ${Number(
+                                    item.price
+                                )
+                                .toFixed(2)
+                                .replace(
+                                    ".",
+                                    ","
+                                )}
+
+                                zł
+
+                            </span>
+
+
+                            <div
+                                class="plan-type">
+
+                                Pakiet
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="remove-item"
+                            onclick="
+                                removeItem(
+                                    ${index}
+                                )
+                            "
+                            aria-label="Usuń">
+
+                            ×
+
+                        </button>
+
                     </div>
 
-                    <div class="cart-item-info">
+                `;
 
-                        <strong>
-                            ${item.name}
-                        </strong>
-
-                        <span>
-                            ${item.price.toFixed(2).replace(".", ",")} zł
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="remove-item"
-                        onclick="removeItem(${index})">
-                        ✕
-                    </button>
-
-                </div>
-            `;
-
-        }
-    ).join("");
+            }
+        ).join("");
 
 
     totalElement.textContent =
-        total.toFixed(2).replace(".", ",") +
-        " zł";
+        total
+            .toFixed(2)
+            .replace(".", ",")
+        + " zł";
 
 
-    checkoutButton.disabled = false;
+    checkoutButton.disabled =
+        false;
 
 }
 
 
-/* =====================================================
-   OTWIERANIE KOSZYKA
-===================================================== */
+/* =========================================================
+   OPEN CART
+========================================================= */
 
 function openCart() {
 
     document
-        .getElementById("cartOverlay")
-        .classList.add("active");
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList.add(
+            "active"
+        );
 
-    document.body.style.overflow = "hidden";
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
-/* =====================================================
-   ZAMYKANIE
-===================================================== */
+/* =========================================================
+   CLOSE CART
+========================================================= */
 
 function closeCart() {
 
     document
-        .getElementById("cartOverlay")
-        .classList.remove("active");
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList.remove(
+            "active"
+        );
 
-    document.body.style.overflow = "";
+
+    document.body.style.overflow =
+        "";
 
 }
 
 
-/* =====================================================
-   KLIK POZA KOSZYKIEM
-===================================================== */
+/* =========================================================
+   OVERLAY CLICK
+========================================================= */
 
 function overlayClick(event) {
 
     if (
-        event.target.id === "cartOverlay"
+        event.target.id ===
+        "cartOverlay"
     ) {
 
         closeCart();
@@ -1954,79 +4278,110 @@ function overlayClick(event) {
 }
 
 
-/* =====================================================
+/* =========================================================
    CHECKOUT
-===================================================== */
+========================================================= */
 
 function checkout() {
 
-    if (cart.length === 0) {
+    if (
+        cart.length === 0
+    ) {
 
-        showToast("Koszyk jest pusty");
+        showToast(
+            "Koszyk jest pusty"
+        );
 
         return;
     }
 
 
     /*
-        Tutaj można później podpiąć
-        prawdziwy system płatności.
+        Aktualnie checkout
+        przekierowuje na Discord.
 
-        Aktualnie klient przechodzi
-        na Discorda.
+        Później można tutaj podpiąć
+        prawdziwe płatności.
     */
 
-    window.location.href = DISCORD_LINK;
+
+    window.location.href =
+        DISCORD_LINK;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    TOAST
-===================================================== */
+========================================================= */
 
 let toastTimeout;
+
 
 function showToast(message) {
 
     const toast =
-        document.getElementById("toast");
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
+        document.getElementById(
+            "toast"
+        );
 
 
-    clearTimeout(toastTimeout);
+    toast.textContent =
+        message;
 
 
-    toastTimeout = setTimeout(() => {
+    toast.classList.add(
+        "show"
+    );
 
-        toast.classList.remove("show");
 
-    }, 2600);
+    clearTimeout(
+        toastTimeout
+    );
+
+
+    toastTimeout =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2600
+        );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    NAVBAR SCROLL
-===================================================== */
+========================================================= */
 
 window.addEventListener(
     "scroll",
     () => {
 
         const navbar =
-            document.getElementById("navbar");
+            document.getElementById(
+                "navbar"
+            );
 
-        if (window.scrollY > 30) {
 
-            navbar.classList.add("scrolled");
+        if (
+            window.scrollY > 30
+        ) {
+
+            navbar.classList.add(
+                "scrolled"
+            );
 
         } else {
 
-            navbar.classList.remove("scrolled");
+            navbar.classList.remove(
+                "scrolled"
+            );
 
         }
 
@@ -2034,29 +4389,34 @@ window.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    REVEAL ANIMATIONS
-===================================================== */
+========================================================= */
 
 const observer =
     new IntersectionObserver(
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                    observer.unobserve(
-                        entry.target
-                    );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
@@ -2066,20 +4426,28 @@ const observer =
 
 
 document
-    .querySelectorAll(".reveal")
-    .forEach(element => {
+    .querySelectorAll(
+        ".reveal"
+    )
+    .forEach(
+        element => {
 
-        observer.observe(element);
+            observer.observe(
+                element
+            );
 
-    });
+        }
+    );
 
 
-/* =====================================================
+/* =========================================================
    CURSOR GLOW
-===================================================== */
+========================================================= */
 
 const cursorGlow =
-    document.getElementById("cursorGlow");
+    document.getElementById(
+        "cursorGlow"
+    );
 
 
 document.addEventListener(
@@ -2089,6 +4457,7 @@ document.addEventListener(
         cursorGlow.style.left =
             event.clientX + "px";
 
+
         cursorGlow.style.top =
             event.clientY + "px";
 
@@ -2096,15 +4465,18 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   ESCAPE = ZAMKNIJ KOSZYK
-===================================================== */
+/* =========================================================
+   ESCAPE
+========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if (event.key === "Escape") {
+        if (
+            event.key ===
+            "Escape"
+        ) {
 
             closeCart();
 
@@ -2114,9 +4486,9 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 renderCart();
 
